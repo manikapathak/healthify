@@ -4,6 +4,8 @@ from pathlib import Path
 import structlog
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 from backend.api.v1.router import router as v1_router
 from backend.config import settings
@@ -49,6 +51,25 @@ def create_app() -> FastAPI:
     )
 
     app.include_router(v1_router, prefix="/api/v1")
+
+    frontend_dist = _ROOT / "frontend" / "dist"
+    
+    # Check if frontend is built
+    if frontend_dist.exists():
+        app.mount("/assets", StaticFiles(directory=frontend_dist / "assets"), name="assets")
+
+        @app.get("/{full_path:path}")
+        async def serve_static(full_path: str):
+            path = frontend_dist / full_path
+            if path.exists() and path.is_file():
+                return FileResponse(path)
+            # Fallback to index.html for React Router / SPA
+            index_path = frontend_dist / "index.html"
+            if index_path.exists():
+                return FileResponse(index_path)
+            return {"message": "Frontend index.html not found"}
+    else:
+        logger.warning("frontend_dist_not_found", path=str(frontend_dist))
 
     return app
 

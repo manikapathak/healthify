@@ -33,6 +33,11 @@ models/*.json
 .ipynb_checkpoints/
 notebooks/.ipynb_checkpoints/
 
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
 # IDE
 .vscode/
 .idea/

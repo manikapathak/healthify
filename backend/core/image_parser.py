@@ -1,13 +1,13 @@
 """
-Image-based blood report parser using OpenAI Vision.
+Image-based blood report parser using Gemini Vision.
 
 Accepts a JPG/PNG/WEBP photo of a blood report and extracts blood parameters
-using gpt-4o-mini's vision capability. Returns the same BloodParameter format
+using gemini-2.0-flash's vision capability. Returns the same BloodParameter format
 as the CSV parser, so the rest of the pipeline (validator, reference ranges,
 simplifier) works unchanged.
 
 Flow:
-  image bytes → base64 encode → OpenAI vision prompt → JSON response → BloodParameter list
+  image bytes -> base64 encode -> Gemini vision prompt -> JSON response -> BloodParameter list
 """
 
 import base64
@@ -23,6 +23,9 @@ from backend.core.parser import BloodParameter, ParseResult, normalize_name
 
 logger = structlog.get_logger()
 
+_GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+_MODEL = "gemini-1.5-flash"
+
 SUPPORTED_MIME_TYPES = {
     ".jpg": "image/jpeg",
     ".jpeg": "image/jpeg",
@@ -37,7 +40,7 @@ Do NOT explain, summarize, or add any commentary.
 
 _EXTRACTION_USER_PROMPT = """Look at this blood test report image and extract ALL blood test parameters.
 
-Return ONLY a valid JSON array. No markdown, no code blocks, no explanation — raw JSON only.
+Return ONLY a valid JSON array. No markdown, no code blocks, no explanation -- raw JSON only.
 
 Each item in the array must have exactly these fields:
 - "name": the test parameter name exactly as it appears in the report
@@ -54,7 +57,7 @@ Example output format:
 Rules:
 - Only include rows that have a clear numeric result
 - Skip rows that are text-only headers, ranges, or flags
-- If a value has a range like "12.0-16.0", skip it — only include the patient's actual result
+- If a value has a range like "12.0-16.0", skip it -- only include the patient's actual result
 - If you cannot read a value clearly, skip that row
 - Return an empty array [] if no blood parameters are found
 """
@@ -125,7 +128,7 @@ def _build_parameters(raw_items: list[dict]) -> ParseResult:
 
 async def parse_image(content: bytes, mime_type: str) -> ParseResult:
     """
-    Extract blood parameters from an image using OpenAI Vision.
+    Extract blood parameters from an image using Gemini Vision.
 
     Args:
         content:   Raw image bytes
@@ -141,12 +144,16 @@ async def parse_image(content: bytes, mime_type: str) -> ParseResult:
         raise ImageParseError("Image file is empty.")
 
     b64 = _encode_image(content)
-    client = AsyncOpenAI(api_key=settings.openai_api_key, timeout=60.0)
+    client = AsyncOpenAI(
+        api_key=settings.gemini_api_key,
+        base_url=_GEMINI_BASE_URL,
+        timeout=60.0,
+    )
 
     try:
         response = await client.chat.completions.create(
-            model="gpt-4o-mini",
-            temperature=0.0,   # deterministic extraction
+            model=_MODEL,
+            temperature=0.0,
             max_tokens=1000,
             messages=[
                 {"role": "system", "content": _EXTRACTION_SYSTEM_PROMPT},
@@ -169,17 +176,17 @@ async def parse_image(content: bytes, mime_type: str) -> ParseResult:
             ],
         )
     except RateLimitError as exc:
-        raise ImageParseError("OpenAI rate limit reached. Please try again shortly.") from exc
+        raise ImageParseError("Gemini rate limit reached. Please try again shortly.") from exc
     except APITimeoutError as exc:
-        raise ImageParseError("OpenAI request timed out. Please try again.") from exc
+        raise ImageParseError("Gemini request timed out. Please try again.") from exc
     except APIError as exc:
-        raise ImageParseError(f"OpenAI API error: {exc}") from exc
+        raise ImageParseError(f"Gemini API error: {exc}") from exc
 
     raw_text = response.choices[0].message.content or ""
     logger.info("image_extraction_raw", length=len(raw_text))
 
     if not raw_text.strip():
-        raise ImageParseError("OpenAI returned an empty response for the image.")
+        raise ImageParseError("Gemini returned an empty response for the image.")
 
     raw_items = _extract_json_from_response(raw_text)
 

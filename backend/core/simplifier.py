@@ -1,11 +1,11 @@
 """
-OpenAI-powered blood report simplifier.
+Gemini-powered blood report simplifier.
 
 Converts parsed blood parameters + reference range comparisons into
 plain-English explanations suitable for a non-medical audience.
 
 Design decisions:
-  - Model: gpt-4o-mini (cost-efficient, sufficient quality)
+  - Model: gemini-2.0-flash (free tier, sufficient quality)
   - Temperature: 0.3 (consistency over creativity)
   - Max tokens: 1500
   - Response caching: identical inputs return cached result
@@ -25,6 +25,9 @@ from backend.core.parser import BloodParameter
 from backend.ml.reference_ranges import RangeResult
 
 logger = structlog.get_logger()
+
+_GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+_MODEL = "gemini-1.5-flash"
 
 _SYSTEM_PROMPT = """You are a clinical report interpreter writing for a general audience.
 
@@ -119,7 +122,11 @@ _cache: dict[str, SimplificationResult] = {}
 
 @lru_cache(maxsize=1)
 def _get_client() -> AsyncOpenAI:
-    return AsyncOpenAI(api_key=settings.openai_api_key, timeout=30.0)
+    return AsyncOpenAI(
+        api_key=settings.gemini_api_key,
+        base_url=_GEMINI_BASE_URL,
+        timeout=30.0,
+    )
 
 
 async def simplify(
@@ -127,7 +134,7 @@ async def simplify(
     ranges: dict[str, RangeResult],
 ) -> SimplificationResult | None:
     """
-    Call OpenAI to explain blood parameters in plain English.
+    Call Gemini to explain blood parameters in plain English.
 
     Returns None on API failure — callers should handle gracefully.
     """
@@ -148,7 +155,7 @@ async def simplify(
     try:
         client = _get_client()
         response = await client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=_MODEL,
             temperature=0.3,
             max_tokens=1500,
             messages=[
@@ -157,13 +164,13 @@ async def simplify(
             ],
         )
     except RateLimitError:
-        logger.warning("openai_rate_limit")
+        logger.warning("gemini_rate_limit")
         return None
     except APITimeoutError:
-        logger.warning("openai_timeout")
+        logger.warning("gemini_timeout")
         return None
     except APIError as exc:
-        logger.error("openai_error", error=str(exc))
+        logger.error("gemini_error", error=str(exc))
         return None
 
     raw_text = response.choices[0].message.content or ""
