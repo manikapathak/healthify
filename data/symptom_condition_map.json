@@ -1,0 +1,227 @@
+{
+  "iron_deficiency_anemia": {
+    "display_name": "Iron Deficiency Anemia",
+    "blood_markers": {
+      "hemoglobin": { "direction": "low", "weight": 0.30 },
+      "ferritin":   { "direction": "low", "weight": 0.25 },
+      "iron":       { "direction": "low", "weight": 0.20 },
+      "mcv":        { "direction": "low", "weight": 0.15 },
+      "tibc":       { "direction": "high", "weight": 0.10 }
+    },
+    "symptoms": {
+      "fatigue":             { "weight": 0.30 },
+      "dizziness":           { "weight": 0.20 },
+      "pale_skin":           { "weight": 0.20 },
+      "shortness_of_breath": { "weight": 0.15 },
+      "cold_hands_feet":     { "weight": 0.10 },
+      "brittle_nails":       { "weight": 0.05 }
+    },
+    "severity": "moderate",
+    "requires_doctor": true,
+    "lifestyle_tips": []
+  },
+
+  "type_2_diabetes": {
+    "display_name": "Type 2 Diabetes",
+    "blood_markers": {
+      "glucose": { "direction": "high", "weight": 0.50 },
+      "hba1c":   { "direction": "high", "weight": 0.50 }
+    },
+    "symptoms": {
+      "excessive_thirst":   { "weight": 0.25 },
+      "frequent_urination": { "weight": 0.25 },
+      "fatigue":            { "weight": 0.20 },
+      "blurred_vision":     { "weight": 0.15 },
+      "slow_wound_healing": { "weight": 0.15 }
+    },
+    "severity": "high",
+    "requires_doctor": true,
+    "lifestyle_tips": []
+  },
+
+  "prediabetes": {
+    "display_name": "Prediabetes",
+    "blood_markers": {
+      "glucose": { "direction": "high", "weight": 0.60 },
+      "hba1c":   { "direction": "high", "weight": 0.40 }
+    },
+    "symptoms": {
+      "fatigue":            { "weight": 0.30 },
+      "excessive_thirst":   { "weight": 0.40 },
+      "frequent_urination": { "weight": 0.30 }
+    },
+    "severity": "moderate",
+    "requires_doctor": false,
+    "lifestyle_tips": [
+      "Reduce refined carbohydrates and added sugars",
+      "Aim for at least 150 minutes of moderate exercise per week",
+      "Maintain a healthy weight — even a 5-7% reduction lowers risk significantly",
+      "Choose whole grains, legumes, and non-starchy vegetables over processed foods"
+    ]
+  },
+
+  "hypothyroidism": {
+    "display_name": "Hypothyroidism",
+    "blood_markers": {
+      "tsh": { "direction": "high", "weight": 0.60 },
+      "t3":  { "direction": "low",  "weight": 0.20 },
+      "t4":  { "direction": "low",  "weight": 0.20 }
+    },
+    "symptoms": {
+      "fatigue":           { "weight": 0.20 },
+      "weight_gain":       { "weight": 0.20 },
+      "cold_sensitivity":  { "weight": 0.20 },
+      "dry_skin":          { "weight": 0.15 },
+      "hair_loss":         { "weight": 0.15 },
+      "constipation":      { "weight": 0.10 }
+    },
+    "severity": "moderate",
+    "requires_doctor": true,
+    "lifestyle_tips": []
+  },
+
+  "hyperthyroidism": {
+    "display_name": "Hyperthyroidism",
+    "blood_markers": {
+      "tsh": { "direction": "low",  "weight": 0.60 },
+      "t3":  { "direction": "high", "weight": 0.20 },
+      "t4":  { "direction": "high", "weight": 0.20 }
+    },
+    "symptoms": {
+      "weight_loss":        { "weight": 0.25 },
+      "rapid_heartbeat":    { "weight": 0.25 },
+      "heat_sensitivity":   { "weight": 0.20 },
+      "anxiety":            { "weight": 0.15 },
+      "tremors":            { "weight": 0.15 }
+    },
+    "severity": "high",
+    "requires_doctor": true,
+    "lifestyle_tips": []
+  },
+
+  "vitamin_d_deficiency": {
+    "display_name": "Vitamin D Deficiency",
+    "blood_markers": {
+      "vitamin_d": { "direction": "low", "weight": 1.0 }
+    },
+    "symptoms": {
+      "fatigue":          { "weight": 0.25 },
+      "bone_pain":        { "weight": 0.30 },
+      "muscle_weakness":  { "weight": 0.25 },
+      "depression":       { "weight": 0.20 }
+    },
+    "severity": "low",
+    "requires_doctor": false,
+    "lifestyle_tips": [
+      "Get 15-20 minutes of direct sunlight daily when possible",
+      "Include vitamin D-rich foods: fatty fish, egg yolks, fortified milk",
+      "Consider a vitamin D3 supplement — discuss dosage with a pharmacist",
+      "Pair vitamin D with calcium-rich foods for better bone health"
+    ]
+  },
+
+  "vitamin_b12_deficiency": {
+    "display_name": "Vitamin B12 Deficiency",
+    "blood_markers": {
+      "vitamin_b12": { "direction": "low", "weight": 0.70 },
+      "hemoglobin":  { "direction": "low", "weight": 0.30 }
+    },
+    "symptoms": {
+      "fatigue":          { "weight": 0.25 },
+      "numbness_tingling":{ "weight": 0.30 },
+      "memory_problems":  { "weight": 0.25 },
+      "pale_skin":        { "weight": 0.20 }
+    },
+    "severity": "moderate",
+    "requires_doctor": false,
+    "lifestyle_tips": [
+      "Increase intake of animal products: meat, fish, eggs, dairy",
+      "If vegetarian or vegan, a B12 supplement is strongly recommended",
+      "Fortified plant-based milks and cereals can help bridge dietary gaps",
+      "Avoid excessive alcohol, which impairs B12 absorption"
+    ]
+  },
+
+  "high_cholesterol": {
+    "display_name": "High Cholesterol",
+    "blood_markers": {
+      "cholesterol":    { "direction": "high", "weight": 0.35 },
+      "ldl":            { "direction": "high", "weight": 0.35 },
+      "hdl":            { "direction": "low",  "weight": 0.20 },
+      "triglycerides":  { "direction": "high", "weight": 0.10 }
+    },
+    "symptoms": {
+      "chest_pain":    { "weight": 0.50 },
+      "fatigue":       { "weight": 0.50 }
+    },
+    "severity": "moderate",
+    "requires_doctor": false,
+    "lifestyle_tips": [
+      "Replace saturated fats with unsaturated fats: olive oil, nuts, avocado",
+      "Increase soluble fiber: oats, beans, lentils, apples",
+      "Exercise at least 30 minutes most days to raise HDL",
+      "Quit smoking — it lowers HDL and accelerates artery damage",
+      "Limit dietary cholesterol: reduce red meat and full-fat dairy"
+    ]
+  },
+
+  "liver_disease": {
+    "display_name": "Liver Disease",
+    "blood_markers": {
+      "alt":              { "direction": "high", "weight": 0.30 },
+      "ast":              { "direction": "high", "weight": 0.25 },
+      "alp":              { "direction": "high", "weight": 0.15 },
+      "bilirubin_total":  { "direction": "high", "weight": 0.15 },
+      "albumin":          { "direction": "low",  "weight": 0.15 }
+    },
+    "symptoms": {
+      "jaundice":         { "weight": 0.35 },
+      "abdominal_pain":   { "weight": 0.25 },
+      "nausea":           { "weight": 0.20 },
+      "fatigue":          { "weight": 0.20 }
+    },
+    "severity": "high",
+    "requires_doctor": true,
+    "lifestyle_tips": []
+  },
+
+  "chronic_kidney_disease": {
+    "display_name": "Chronic Kidney Disease",
+    "blood_markers": {
+      "creatinine": { "direction": "high", "weight": 0.40 },
+      "bun":        { "direction": "high", "weight": 0.35 },
+      "potassium":  { "direction": "high", "weight": 0.15 },
+      "hemoglobin": { "direction": "low",  "weight": 0.10 }
+    },
+    "symptoms": {
+      "fatigue":          { "weight": 0.25 },
+      "swelling_ankles":  { "weight": 0.25 },
+      "decreased_urination": { "weight": 0.25 },
+      "nausea":           { "weight": 0.25 }
+    },
+    "severity": "high",
+    "requires_doctor": true,
+    "lifestyle_tips": []
+  },
+
+  "gout": {
+    "display_name": "Gout",
+    "blood_markers": {
+      "uric_acid": { "direction": "high", "weight": 1.0 }
+    },
+    "symptoms": {
+      "joint_pain":       { "weight": 0.40 },
+      "joint_swelling":   { "weight": 0.35 },
+      "joint_redness":    { "weight": 0.25 }
+    },
+    "severity": "moderate",
+    "requires_doctor": false,
+    "lifestyle_tips": [
+      "Reduce purine-rich foods: red meat, organ meats, shellfish, anchovies",
+      "Stay well hydrated — drink at least 2-3 litres of water daily",
+      "Limit alcohol, especially beer and spirits",
+      "Avoid high-fructose corn syrup found in sweetened drinks and processed foods",
+      "Maintain a healthy weight to reduce uric acid production"
+    ]
+  }
+}

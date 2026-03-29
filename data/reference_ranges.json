@@ -1,0 +1,374 @@
+{
+  "hemoglobin": {
+    "unit": "g/dL",
+    "source": "WHO / Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 13.5, "high": 17.5 },
+      "adult_female": { "low": 12.0, "high": 16.0 },
+      "child":        { "low": 11.0, "high": 16.0 },
+      "elderly":      { "low": 11.0, "high": 17.0 }
+    },
+    "critical_low": 7.0,
+    "critical_high": 20.0
+  },
+  "rbc": {
+    "unit": "million/uL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 4.5, "high": 5.9 },
+      "adult_female": { "low": 4.0, "high": 5.2 },
+      "child":        { "low": 3.8, "high": 5.5 },
+      "elderly":      { "low": 3.8, "high": 5.8 }
+    },
+    "critical_low": 2.0,
+    "critical_high": 8.0
+  },
+  "wbc": {
+    "unit": "/uL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 4500, "high": 11000 },
+      "adult_female": { "low": 4500, "high": 11000 },
+      "child":        { "low": 5000, "high": 15000 },
+      "elderly":      { "low": 4000, "high": 11000 }
+    },
+    "critical_low": 2000,
+    "critical_high": 30000
+  },
+  "platelets": {
+    "unit": "/uL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 150000, "high": 400000 },
+      "adult_female": { "low": 150000, "high": 400000 },
+      "child":        { "low": 150000, "high": 400000 },
+      "elderly":      { "low": 150000, "high": 400000 }
+    },
+    "critical_low": 50000,
+    "critical_high": 1000000
+  },
+  "hematocrit": {
+    "unit": "%",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 41.0, "high": 53.0 },
+      "adult_female": { "low": 36.0, "high": 46.0 },
+      "child":        { "low": 34.0, "high": 45.0 },
+      "elderly":      { "low": 34.0, "high": 50.0 }
+    },
+    "critical_low": 20.0,
+    "critical_high": 60.0
+  },
+  "mcv": {
+    "unit": "fL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 80.0, "high": 100.0 },
+      "adult_female": { "low": 80.0, "high": 100.0 },
+      "child":        { "low": 70.0, "high": 100.0 },
+      "elderly":      { "low": 80.0, "high": 100.0 }
+    },
+    "critical_low": 60.0,
+    "critical_high": 120.0
+  },
+  "mch": {
+    "unit": "pg",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 27.0, "high": 33.0 },
+      "adult_female": { "low": 27.0, "high": 33.0 },
+      "child":        { "low": 24.0, "high": 33.0 },
+      "elderly":      { "low": 27.0, "high": 33.0 }
+    },
+    "critical_low": 20.0,
+    "critical_high": 40.0
+  },
+  "mchc": {
+    "unit": "g/dL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 32.0, "high": 36.0 },
+      "adult_female": { "low": 32.0, "high": 36.0 },
+      "child":        { "low": 31.0, "high": 36.0 },
+      "elderly":      { "low": 31.0, "high": 36.0 }
+    },
+    "critical_low": 28.0,
+    "critical_high": 40.0
+  },
+  "glucose": {
+    "unit": "mg/dL",
+    "source": "American Diabetes Association",
+    "ranges": {
+      "adult_male":   { "low": 70.0, "high": 99.0 },
+      "adult_female": { "low": 70.0, "high": 99.0 },
+      "child":        { "low": 70.0, "high": 100.0 },
+      "elderly":      { "low": 70.0, "high": 110.0 }
+    },
+    "critical_low": 40.0,
+    "critical_high": 500.0
+  },
+  "hba1c": {
+    "unit": "%",
+    "source": "American Diabetes Association",
+    "ranges": {
+      "adult_male":   { "low": 4.0, "high": 5.6 },
+      "adult_female": { "low": 4.0, "high": 5.6 },
+      "child":        { "low": 4.0, "high": 5.6 },
+      "elderly":      { "low": 4.0, "high": 6.5 }
+    },
+    "critical_low": 3.0,
+    "critical_high": 14.0
+  },
+  "cholesterol": {
+    "unit": "mg/dL",
+    "source": "American Heart Association",
+    "ranges": {
+      "adult_male":   { "low": 0.0, "high": 200.0 },
+      "adult_female": { "low": 0.0, "high": 200.0 },
+      "child":        { "low": 0.0, "high": 170.0 },
+      "elderly":      { "low": 0.0, "high": 200.0 }
+    },
+    "critical_low": 0.0,
+    "critical_high": 300.0
+  },
+  "ldl": {
+    "unit": "mg/dL",
+    "source": "American Heart Association",
+    "ranges": {
+      "adult_male":   { "low": 0.0, "high": 100.0 },
+      "adult_female": { "low": 0.0, "high": 100.0 },
+      "child":        { "low": 0.0, "high": 110.0 },
+      "elderly":      { "low": 0.0, "high": 100.0 }
+    },
+    "critical_low": 0.0,
+    "critical_high": 190.0
+  },
+  "hdl": {
+    "unit": "mg/dL",
+    "source": "American Heart Association",
+    "ranges": {
+      "adult_male":   { "low": 40.0, "high": 200.0 },
+      "adult_female": { "low": 50.0, "high": 200.0 },
+      "child":        { "low": 40.0, "high": 200.0 },
+      "elderly":      { "low": 40.0, "high": 200.0 }
+    },
+    "critical_low": 20.0,
+    "critical_high": 200.0
+  },
+  "triglycerides": {
+    "unit": "mg/dL",
+    "source": "American Heart Association",
+    "ranges": {
+      "adult_male":   { "low": 0.0, "high": 150.0 },
+      "adult_female": { "low": 0.0, "high": 150.0 },
+      "child":        { "low": 0.0, "high": 150.0 },
+      "elderly":      { "low": 0.0, "high": 150.0 }
+    },
+    "critical_low": 0.0,
+    "critical_high": 500.0
+  },
+  "creatinine": {
+    "unit": "mg/dL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 0.74, "high": 1.35 },
+      "adult_female": { "low": 0.59, "high": 1.04 },
+      "child":        { "low": 0.30, "high": 0.70 },
+      "elderly":      { "low": 0.60, "high": 1.30 }
+    },
+    "critical_low": 0.3,
+    "critical_high": 10.0
+  },
+  "bun": {
+    "unit": "mg/dL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 8.0, "high": 24.0 },
+      "adult_female": { "low": 6.0, "high": 21.0 },
+      "child":        { "low": 5.0, "high": 18.0 },
+      "elderly":      { "low": 8.0, "high": 23.0 }
+    },
+    "critical_low": 2.0,
+    "critical_high": 100.0
+  },
+  "uric_acid": {
+    "unit": "mg/dL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 3.5, "high": 7.2 },
+      "adult_female": { "low": 2.6, "high": 6.0 },
+      "child":        { "low": 2.0, "high": 5.5 },
+      "elderly":      { "low": 3.5, "high": 7.2 }
+    },
+    "critical_low": 1.0,
+    "critical_high": 12.0
+  },
+  "alt": {
+    "unit": "U/L",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 7.0,  "high": 56.0 },
+      "adult_female": { "low": 7.0,  "high": 45.0 },
+      "child":        { "low": 7.0,  "high": 45.0 },
+      "elderly":      { "low": 7.0,  "high": 56.0 }
+    },
+    "critical_low": 0.0,
+    "critical_high": 1000.0
+  },
+  "ast": {
+    "unit": "U/L",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 10.0, "high": 40.0 },
+      "adult_female": { "low": 10.0, "high": 34.0 },
+      "child":        { "low": 10.0, "high": 40.0 },
+      "elderly":      { "low": 10.0, "high": 40.0 }
+    },
+    "critical_low": 0.0,
+    "critical_high": 1000.0
+  },
+  "alp": {
+    "unit": "U/L",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 44.0, "high": 147.0 },
+      "adult_female": { "low": 44.0, "high": 147.0 },
+      "child":        { "low": 100.0, "high": 400.0 },
+      "elderly":      { "low": 44.0, "high": 147.0 }
+    },
+    "critical_low": 0.0,
+    "critical_high": 1000.0
+  },
+  "bilirubin_total": {
+    "unit": "mg/dL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 0.1, "high": 1.2 },
+      "adult_female": { "low": 0.1, "high": 1.2 },
+      "child":        { "low": 0.1, "high": 1.2 },
+      "elderly":      { "low": 0.1, "high": 1.2 }
+    },
+    "critical_low": 0.0,
+    "critical_high": 15.0
+  },
+  "albumin": {
+    "unit": "g/dL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 3.5, "high": 5.0 },
+      "adult_female": { "low": 3.5, "high": 5.0 },
+      "child":        { "low": 3.5, "high": 5.0 },
+      "elderly":      { "low": 3.2, "high": 4.8 }
+    },
+    "critical_low": 1.5,
+    "critical_high": 6.0
+  },
+  "tsh": {
+    "unit": "mIU/L",
+    "source": "American Thyroid Association",
+    "ranges": {
+      "adult_male":   { "low": 0.4, "high": 4.0 },
+      "adult_female": { "low": 0.4, "high": 4.0 },
+      "child":        { "low": 0.7, "high": 6.4 },
+      "elderly":      { "low": 0.4, "high": 6.0 }
+    },
+    "critical_low": 0.01,
+    "critical_high": 10.0
+  },
+  "ferritin": {
+    "unit": "ng/mL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 24.0,  "high": 336.0 },
+      "adult_female": { "low": 11.0,  "high": 307.0 },
+      "child":        { "low": 7.0,   "high": 140.0 },
+      "elderly":      { "low": 24.0,  "high": 336.0 }
+    },
+    "critical_low": 5.0,
+    "critical_high": 1000.0
+  },
+  "iron": {
+    "unit": "ug/dL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 65.0,  "high": 175.0 },
+      "adult_female": { "low": 50.0,  "high": 170.0 },
+      "child":        { "low": 50.0,  "high": 120.0 },
+      "elderly":      { "low": 60.0,  "high": 170.0 }
+    },
+    "critical_low": 20.0,
+    "critical_high": 300.0
+  },
+  "tibc": {
+    "unit": "ug/dL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 250.0, "high": 370.0 },
+      "adult_female": { "low": 250.0, "high": 370.0 },
+      "child":        { "low": 250.0, "high": 400.0 },
+      "elderly":      { "low": 250.0, "high": 370.0 }
+    },
+    "critical_low": 100.0,
+    "critical_high": 600.0
+  },
+  "vitamin_b12": {
+    "unit": "pg/mL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 200.0, "high": 900.0 },
+      "adult_female": { "low": 200.0, "high": 900.0 },
+      "child":        { "low": 200.0, "high": 900.0 },
+      "elderly":      { "low": 200.0, "high": 900.0 }
+    },
+    "critical_low": 100.0,
+    "critical_high": 2000.0
+  },
+  "vitamin_d": {
+    "unit": "ng/mL",
+    "source": "Endocrine Society",
+    "ranges": {
+      "adult_male":   { "low": 30.0, "high": 100.0 },
+      "adult_female": { "low": 30.0, "high": 100.0 },
+      "child":        { "low": 20.0, "high": 100.0 },
+      "elderly":      { "low": 30.0, "high": 100.0 }
+    },
+    "critical_low": 10.0,
+    "critical_high": 150.0
+  },
+  "sodium": {
+    "unit": "mEq/L",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 136.0, "high": 145.0 },
+      "adult_female": { "low": 136.0, "high": 145.0 },
+      "child":        { "low": 136.0, "high": 145.0 },
+      "elderly":      { "low": 136.0, "high": 145.0 }
+    },
+    "critical_low": 120.0,
+    "critical_high": 160.0
+  },
+  "potassium": {
+    "unit": "mEq/L",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 3.5, "high": 5.0 },
+      "adult_female": { "low": 3.5, "high": 5.0 },
+      "child":        { "low": 3.4, "high": 4.7 },
+      "elderly":      { "low": 3.5, "high": 5.0 }
+    },
+    "critical_low": 2.5,
+    "critical_high": 6.5
+  },
+  "calcium": {
+    "unit": "mg/dL",
+    "source": "Mayo Clinic",
+    "ranges": {
+      "adult_male":   { "low": 8.5,  "high": 10.5 },
+      "adult_female": { "low": 8.5,  "high": 10.5 },
+      "child":        { "low": 8.8,  "high": 11.0 },
+      "elderly":      { "low": 8.5,  "high": 10.5 }
+    },
+    "critical_low": 6.0,
+    "critical_high": 14.0
+  }
+}

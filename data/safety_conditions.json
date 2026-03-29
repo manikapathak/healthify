@@ -1,0 +1,114 @@
+{
+  "_comment": "Hard thresholds that trigger requires_immediate_attention=True regardless of risk score. When uncertain, add it here — false alarms are acceptable, missed criticals are not.",
+
+  "thresholds": [
+    {
+      "parameter": "glucose",
+      "operator": "gt",
+      "value": 200,
+      "reason": "Possible uncontrolled diabetes or hyperglycaemic crisis"
+    },
+    {
+      "parameter": "glucose",
+      "operator": "lt",
+      "value": 50,
+      "reason": "Possible hypoglycaemia — requires immediate treatment"
+    },
+    {
+      "parameter": "hba1c",
+      "operator": "gt",
+      "value": 8.0,
+      "reason": "Poor long-term glycaemic control — significant complication risk"
+    },
+    {
+      "parameter": "hemoglobin",
+      "operator": "lt",
+      "value": 7.0,
+      "reason": "Severe anaemia — may require transfusion"
+    },
+    {
+      "parameter": "alt",
+      "operator": "gt",
+      "value": 200,
+      "reason": "Markedly elevated liver enzyme — possible acute liver injury"
+    },
+    {
+      "parameter": "ast",
+      "operator": "gt",
+      "value": 200,
+      "reason": "Markedly elevated liver enzyme — possible acute liver injury"
+    },
+    {
+      "parameter": "creatinine",
+      "operator": "gt",
+      "value": 3.0,
+      "reason": "Possible acute or severe chronic kidney failure"
+    },
+    {
+      "parameter": "bun",
+      "operator": "gt",
+      "value": 100,
+      "reason": "Severely elevated urea — possible kidney failure or dehydration crisis"
+    },
+    {
+      "parameter": "potassium",
+      "operator": "gt",
+      "value": 6.0,
+      "reason": "Hyperkalaemia — risk of life-threatening cardiac arrhythmia"
+    },
+    {
+      "parameter": "potassium",
+      "operator": "lt",
+      "value": 2.5,
+      "reason": "Severe hypokalaemia — risk of cardiac arrhythmia and muscle paralysis"
+    },
+    {
+      "parameter": "sodium",
+      "operator": "gt",
+      "value": 155,
+      "reason": "Severe hypernatraemia — risk of neurological damage"
+    },
+    {
+      "parameter": "sodium",
+      "operator": "lt",
+      "value": 120,
+      "reason": "Severe hyponatraemia — risk of cerebral oedema and seizures"
+    },
+    {
+      "parameter": "platelets",
+      "operator": "lt",
+      "value": 50000,
+      "reason": "Severe thrombocytopenia — significant bleeding risk"
+    },
+    {
+      "parameter": "wbc",
+      "operator": "gt",
+      "value": 30000,
+      "reason": "Markedly elevated white cell count — possible infection, leukaemia, or inflammatory crisis"
+    },
+    {
+      "parameter": "wbc",
+      "operator": "lt",
+      "value": 2000,
+      "reason": "Severe leucopenia — high risk of serious infection"
+    },
+    {
+      "parameter": "bilirubin_total",
+      "operator": "gt",
+      "value": 10.0,
+      "reason": "Severe hyperbilirubinaemia — possible acute liver failure or biliary obstruction"
+    },
+    {
+      "parameter": "calcium",
+      "operator": "gt",
+      "value": 13.0,
+      "reason": "Severe hypercalcaemia — risk of cardiac and renal complications"
+    },
+    {
+      "parameter": "calcium",
+      "operator": "lt",
+      "value": 6.5,
+      "reason": "Severe hypocalcaemia — risk of tetany and cardiac arrhythmia"
+    }
+  ]
+}

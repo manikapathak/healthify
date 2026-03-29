@@ -1,0 +1,45 @@
+# Environment
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.coverage
+htmlcov/
+
+# Project planning docs — internal only
+MASTER_PROMPT.md
+
+# Large data files — never commit raw datasets
+data/kaggle/
+data/user_labeled/
+data/training_data.csv
+data/training_data_normalized.csv
+data/classifier_training_data.csv
+data/synthetic_*.csv
+
+# Trained model artifacts — large binary files
+models/*.joblib
+models/*.pkl
+models/*.json
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Claude Code local settings
+.claude/
