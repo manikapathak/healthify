@@ -1,11 +1,11 @@
 """
-Gemini-powered blood report simplifier.
+Groq-powered blood report simplifier.
 
 Converts parsed blood parameters + reference range comparisons into
 plain-English explanations suitable for a non-medical audience.
 
 Design decisions:
-  - Model: gemini-2.0-flash (free tier, sufficient quality)
+  - Model: llama-3.3-70b-versatile (free tier, high quality)
   - Temperature: 0.3 (consistency over creativity)
   - Max tokens: 1500
   - Response caching: identical inputs return cached result
@@ -26,8 +26,8 @@ from backend.ml.reference_ranges import RangeResult
 
 logger = structlog.get_logger()
 
-_GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
-_MODEL = "gemini-1.5-flash"
+_GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+_MODEL = "llama-3.3-70b-versatile"
 
 _SYSTEM_PROMPT = """You are a clinical report interpreter writing for a general audience.
 
@@ -123,8 +123,8 @@ _cache: dict[str, SimplificationResult] = {}
 @lru_cache(maxsize=1)
 def _get_client() -> AsyncOpenAI:
     return AsyncOpenAI(
-        api_key=settings.gemini_api_key,
-        base_url=_GEMINI_BASE_URL,
+        api_key=settings.groq_api_key,
+        base_url=_GROQ_BASE_URL,
         timeout=30.0,
     )
 
@@ -164,13 +164,13 @@ async def simplify(
             ],
         )
     except RateLimitError:
-        logger.warning("gemini_rate_limit")
+        logger.warning("groq_rate_limit")
         return None
     except APITimeoutError:
-        logger.warning("gemini_timeout")
+        logger.warning("groq_timeout")
         return None
     except APIError as exc:
-        logger.error("gemini_error", error=str(exc))
+        logger.error("groq_error", error=str(exc))
         return None
 
     raw_text = response.choices[0].message.content or ""

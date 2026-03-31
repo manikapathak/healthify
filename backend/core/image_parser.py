@@ -23,8 +23,8 @@ from backend.core.parser import BloodParameter, ParseResult, normalize_name
 
 logger = structlog.get_logger()
 
-_GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
-_MODEL = "gemini-1.5-flash"
+_GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
 
 SUPPORTED_MIME_TYPES = {
     ".jpg": "image/jpeg",
@@ -145,8 +145,8 @@ async def parse_image(content: bytes, mime_type: str) -> ParseResult:
 
     b64 = _encode_image(content)
     client = AsyncOpenAI(
-        api_key=settings.gemini_api_key,
-        base_url=_GEMINI_BASE_URL,
+        api_key=settings.groq_api_key,
+        base_url=_GROQ_BASE_URL,
         timeout=60.0,
     )
 
@@ -176,17 +176,17 @@ async def parse_image(content: bytes, mime_type: str) -> ParseResult:
             ],
         )
     except RateLimitError as exc:
-        raise ImageParseError("Gemini rate limit reached. Please try again shortly.") from exc
+        raise ImageParseError("Groq rate limit reached. Please try again shortly.") from exc
     except APITimeoutError as exc:
-        raise ImageParseError("Gemini request timed out. Please try again.") from exc
+        raise ImageParseError("Groq request timed out. Please try again.") from exc
     except APIError as exc:
-        raise ImageParseError(f"Gemini API error: {exc}") from exc
+        raise ImageParseError(f"Groq API error: {exc}") from exc
 
     raw_text = response.choices[0].message.content or ""
     logger.info("image_extraction_raw", length=len(raw_text))
 
     if not raw_text.strip():
-        raise ImageParseError("Gemini returned an empty response for the image.")
+        raise ImageParseError("Groq returned an empty response for the image.")
 
     raw_items = _extract_json_from_response(raw_text)
 
